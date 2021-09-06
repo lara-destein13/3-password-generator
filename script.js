@@ -2,6 +2,7 @@ var length = 0;
 var eligibleCharacters = '';
 
 var generateBtn = document.querySelector("#generate");
+var passwordArea = document.querySelector("#password");
 
 function getLength() {
   while(true) {
@@ -98,12 +99,16 @@ function getCharacters() {
   }
 }
 
-
 function main() {
   getLength();
-  alert(`length: ${length}`);
   getCharacters();
-  alert(`eligibleCharacters: ${eligibleCharacters}`);
+  var password = '';
+  for (let i = 0; i < length; i += 1) {
+    var index = Math.floor(Math.random() * eligibleCharacters.length) + 1
+    var char = eligibleCharacters[index];
+    password += char;
+  }
+  passwordArea.innerHTML = password;
 }
 
 generateBtn.addEventListener("click", main);
