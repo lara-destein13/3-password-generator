@@ -1,17 +1,23 @@
-// Assignment code here
+var length = 0;
 
-
-// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
-// Write password to the #password input
-function writePassword() {
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
-
-  // passwordText.value = password;
-  alert("The button works");
+function getLength() {
+  while(true) {
+    length = window.prompt("Enter password length (8 to 128)");
+    if (length !== null) {
+      length = parseInt(length);
+      if (length >= 8 && length <= 128) {
+        return length;
+      }
+    }
+    alert(`Invalid length: ${length}`);
+  }
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+function main() {
+  getLength();
+  alert(`length: ${length}`);
+}
+
+generateBtn.addEventListener("click", main);
